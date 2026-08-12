@@ -4,28 +4,28 @@ import { FaGithub, FaExternalLinkAlt, FaFolderOpen, FaCheckCircle } from 'react-
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-dark-900 relative">
+    <section id="projects" className="py-20 sm:py-24 bg-dark-900 relative w-full max-w-full overflow-hidden">
       {/* Background Ambient Glow */}
-      <div className="absolute bottom-10 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[150px] pointer-events-none"></div>
-      <div className="absolute top-10 right-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-[150px] pointer-events-none"></div>
+      <div className="absolute bottom-10 left-0 w-72 sm:w-96 h-72 sm:h-96 bg-blue-600/10 rounded-full blur-[130px] pointer-events-none"></div>
+      <div className="absolute top-10 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-sky-500/10 rounded-full blur-[130px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <div className="inline-block text-sky-400 text-sm font-semibold tracking-wider uppercase bg-blue-500/10 px-3.5 py-1 rounded-full border border-sky-400/30">
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-2.5 sm:space-y-3">
+          <div className="inline-block text-sky-400 text-xs sm:text-sm font-semibold tracking-wider uppercase bg-blue-500/10 px-3.5 py-1 rounded-full border border-sky-400/30">
             Portfolio Showcase
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white">
             Featured <span className="text-gradient-blue">Projects</span>
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
+          <p className="text-slate-400 text-xs sm:text-base">
             Real-world software applications, AI/ML models, and deployed full-stack systems from my portfolio.
           </p>
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {personalDetails.projects.map((project, index) => (
             <div
               key={project.id || index}
@@ -34,30 +34,30 @@ const Projects = () => {
               {/* Card Accent Top Bar */}
               <div className="h-1.5 bg-gradient-to-r from-sky-400 via-blue-600 to-indigo-600"></div>
 
-              <div className="p-7 sm:p-8 flex-1 flex flex-col justify-between">
+              <div className="p-5 sm:p-8 flex-1 flex flex-col justify-between">
                 
                 <div>
                   {/* Top Icon & Featured Pill */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center text-sky-400 shadow-sm">
-                      <FaFolderOpen size={20} />
+                  <div className="flex items-center justify-between mb-3.5 sm:mb-4">
+                    <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center text-sky-400 shadow-sm">
+                      <FaFolderOpen size={18} />
                     </div>
                     {project.featured && (
-                      <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-500/20 text-sky-300 border border-blue-400/40 shadow-glow-subtle">
-                        Featured Project
+                      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-blue-500/20 text-sky-300 border border-blue-400/40 shadow-glow-subtle">
+                        Featured
                       </span>
                     )}
                   </div>
 
                   {/* Project Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-sky-300 transition-colors">
+                  <h3 className="text-lg sm:text-2xl font-bold text-white mb-2 group-hover:text-sky-300 transition-colors">
                     {project.title}
                   </h3>
 
                   {/* Bullet Points from Resume */}
-                  <ul className="space-y-2 mb-6 mt-3 text-slate-300 text-xs sm:text-sm">
+                  <ul className="space-y-2 mb-5 sm:mb-6 mt-2.5 sm:mt-3 text-slate-300 text-xs sm:text-sm">
                     {project.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-2.5 leading-relaxed">
+                      <li key={bIdx} className="flex items-start gap-2 leading-relaxed">
                         <FaCheckCircle className="text-sky-400 text-xs mt-1 shrink-0" />
                         <span>{bullet}</span>
                       </li>
@@ -67,11 +67,11 @@ const Projects = () => {
 
                 <div>
                   {/* Tech Stack Pills */}
-                  <div className="flex flex-wrap gap-2 mb-6 pt-3 border-t border-blue-500/20">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-5 sm:mb-6 pt-3 border-t border-blue-500/20">
                     {project.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="text-xs font-medium bg-dark-800 text-sky-300 px-2.5 py-1 rounded-md border border-blue-500/20"
+                        className="text-[11px] sm:text-xs font-medium bg-dark-800 text-sky-300 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border border-blue-500/20"
                       >
                         {tag}
                       </span>
@@ -79,15 +79,15 @@ const Projects = () => {
                   </div>
 
                   {/* Action Buttons: Live Demo + GitHub */}
-                  <div className="flex flex-wrap items-center gap-3 pt-1">
+                  <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1">
                     {project.liveDemo && (
                       <a
                         href={project.liveDemo}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex-1 inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-700 hover:to-sky-600 px-4 py-2.5 rounded-xl shadow-glow-subtle transition-all duration-200"
+                        className="flex-1 inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-700 hover:to-sky-600 px-3.5 sm:px-4 py-2.5 rounded-xl shadow-glow-subtle transition-all duration-200"
                       >
-                        <FaExternalLinkAlt className="text-xs" />
+                        <FaExternalLinkAlt className="text-[10px] sm:text-xs" />
                         <span>Live Demo</span>
                       </a>
                     )}
@@ -96,11 +96,11 @@ const Projects = () => {
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
-                      className={`inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-slate-200 bg-dark-700 hover:bg-dark-600 hover:text-white px-4 py-2.5 rounded-xl border border-blue-500/30 hover:border-sky-400 transition-all duration-200 ${
+                      className={`inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-slate-200 bg-dark-700 hover:bg-dark-600 hover:text-white px-3.5 sm:px-4 py-2.5 rounded-xl border border-blue-500/30 hover:border-sky-400 transition-all duration-200 ${
                         project.liveDemo ? 'flex-1' : 'w-full'
                       }`}
                     >
-                      <FaGithub className="text-base text-sky-400" />
+                      <FaGithub className="text-sm sm:text-base text-sky-400" />
                       <span>Source Code</span>
                     </a>
                   </div>

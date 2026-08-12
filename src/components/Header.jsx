@@ -26,7 +26,7 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
         isScrolled
           ? 'glass-nav shadow-lg shadow-black/60 py-3'
-          : 'bg-[#050814]/80 backdrop-blur-md border-b border-blue-500/10 py-4'
+          : 'bg-[#050814]/90 backdrop-blur-md border-b border-blue-500/10 py-3.5 sm:py-4'
       }`}
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -34,9 +34,9 @@ const Header = () => {
         {/* Brand Logo */}
         <a
           href="#home"
-          className="text-xl sm:text-2xl font-bold tracking-tight text-white group flex items-center gap-2 focus:outline-none shrink-0"
+          className="text-lg sm:text-2xl font-bold tracking-tight text-white group flex items-center gap-1.5 sm:gap-2 focus:outline-none shrink-0"
         >
-          <span className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/50 flex items-center justify-center text-sky-400 font-extrabold text-sm sm:text-base group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-glow-subtle">
+          <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-500/20 border border-blue-400/50 flex items-center justify-center text-sky-400 font-extrabold text-xs sm:text-base group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-glow-subtle shrink-0">
             KD
           </span>
           <span className="font-semibold text-white">{personalDetails.name.split(' ')[0]}</span>
@@ -63,20 +63,20 @@ const Header = () => {
           </a>
         </nav>
 
-        {/* Mobile Hamburger Button (High-visibility top right) */}
-        <div className="flex md:hidden items-center">
+        {/* Mobile Hamburger Button */}
+        <div className="flex md:hidden items-center shrink-0">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={isMenuOpen}
-            className="w-10 h-10 rounded-xl bg-dark-800/90 border border-sky-400/40 flex items-center justify-center text-sky-300 hover:text-white hover:bg-blue-600/30 hover:border-sky-300 transition-all duration-200 shadow-glow-subtle focus:outline-none active:scale-95"
+            className="w-10 h-10 rounded-xl bg-dark-800/95 border border-sky-400/50 flex items-center justify-center text-sky-300 hover:text-white hover:bg-blue-600/30 hover:border-sky-300 transition-all duration-200 shadow-glow-subtle focus:outline-none active:scale-95 shrink-0"
           >
             {isMenuOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
@@ -85,9 +85,9 @@ const Header = () => {
 
       </div>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile Drawer Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden glass-card border-t border-b border-blue-500/20 px-6 py-6 flex flex-col gap-4 text-slate-200 animate-fadeIn shadow-2xl bg-dark-950/95 backdrop-blur-xl">
+        <div className="md:hidden glass-card border-t border-b border-blue-500/20 px-6 py-5 flex flex-col gap-3.5 text-slate-200 animate-fadeIn shadow-2xl bg-dark-950/98 backdrop-blur-xl">
           {navLinks.map((link) => (
             <a
               key={link.name}

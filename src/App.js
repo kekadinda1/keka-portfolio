@@ -9,9 +9,9 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="bg-[#050814] min-h-screen text-white font-sans selection:bg-blue-600 selection:text-white">
+    <div className="bg-[#050814] min-h-screen text-white font-sans selection:bg-blue-600 selection:text-white w-full max-w-full overflow-x-hidden">
       <Header />
-      <main>
+      <main className="w-full max-w-full overflow-x-hidden">
         <Banner />
         <Skills />
         <Education />
