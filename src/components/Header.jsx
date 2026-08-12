@@ -23,19 +23,20 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'glass-nav shadow-lg shadow-black/50 py-3.5'
-          : 'bg-transparent py-5'
+          ? 'glass-nav shadow-lg shadow-black/60 py-3'
+          : 'bg-[#050814]/80 backdrop-blur-md border-b border-blue-500/10 py-4'
       }`}
     >
-      <div className="container mx-auto px-6 max-w-7xl flex justify-between items-center">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        
         {/* Brand Logo */}
         <a
           href="#home"
-          className="text-2xl font-bold tracking-tight text-white group flex items-center gap-2 focus:outline-none"
+          className="text-xl sm:text-2xl font-bold tracking-tight text-white group flex items-center gap-2 focus:outline-none shrink-0"
         >
-          <span className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-sky-400 font-extrabold text-lg group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-glow-subtle">
+          <span className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/50 flex items-center justify-center text-sky-400 font-extrabold text-sm sm:text-base group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-glow-subtle">
             KD
           </span>
           <span className="font-semibold text-white">{personalDetails.name.split(' ')[0]}</span>
@@ -62,36 +63,37 @@ const Header = () => {
           </a>
         </nav>
 
-        {/* Mobile Hamburger Button */}
-        <div className="md:hidden">
+        {/* Mobile Hamburger Button (High-visibility top right) */}
+        <div className="flex md:hidden items-center">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={isMenuOpen}
-            className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-blue-500/10 border border-transparent hover:border-blue-500/30 transition-colors focus:outline-none"
+            className="w-10 h-10 rounded-xl bg-dark-800/90 border border-sky-400/40 flex items-center justify-center text-sky-300 hover:text-white hover:bg-blue-600/30 hover:border-sky-300 transition-all duration-200 shadow-glow-subtle focus:outline-none active:scale-95"
           >
             {isMenuOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>
         </div>
+
       </div>
 
       {/* Mobile Drawer Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden glass-card border-b border-blue-500/20 px-6 py-6 flex flex-col gap-4 text-slate-200 animate-fadeIn">
+        <div className="md:hidden glass-card border-t border-b border-blue-500/20 px-6 py-6 flex flex-col gap-4 text-slate-200 animate-fadeIn shadow-2xl bg-dark-950/95 backdrop-blur-xl">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className="text-base font-medium hover:text-sky-400 py-2 border-b border-blue-500/10"
+              className="text-base font-semibold text-slate-200 hover:text-sky-400 py-2 border-b border-blue-500/10 transition-colors"
             >
               {link.name}
             </a>
@@ -99,7 +101,7 @@ const Header = () => {
           <a
             href="#contact"
             onClick={() => setIsMenuOpen(false)}
-            className="mt-2 text-center py-3 rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 text-white font-semibold shadow-glow-blue hover:from-blue-700 hover:to-sky-600 transition-all"
+            className="mt-2 text-center py-3 rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 text-white font-bold shadow-glow-blue hover:from-blue-700 hover:to-sky-600 transition-all"
           >
             Get In Touch
           </a>
