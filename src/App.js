@@ -4,17 +4,21 @@ import Banner from './components/Banner';
 import Skills from './components/Skills';
 import Education from './components/Education';
 import Projects from './components/Projects';
-import Footer from './components/Footer'; // Import Footer
+import Achievements from './components/Achievements';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="bg-[#1a0b2e] min-h-screen text-white font-sans">
+    <div className="bg-[#050814] min-h-screen text-white font-sans selection:bg-blue-600 selection:text-white">
       <Header />
-      <Banner />
-      <Skills />
-      <Education />
-      <Projects />
-      <Footer /> {/* Add Footer Here */}
+      <main>
+        <Banner />
+        <Skills />
+        <Education />
+        <Projects />
+        <Achievements />
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -1,69 +1,127 @@
 import React from 'react';
 import { personalDetails } from '../Data/personalDetails';
 
-// Import Icons
-import { FaPython, FaJava, FaHtml5, FaCss3Alt, FaReact, FaGithub, FaGitAlt } from 'react-icons/fa';
-import { SiC, SiCplusplus, SiMysql, SiTailwindcss, SiJavascript } from 'react-icons/si';
+// React Icons
+import {
+  FaPython,
+  FaJava,
+  FaHtml5,
+  FaCss3Alt,
+  FaReact,
+  FaGithub,
+  FaGitAlt,
+  FaDatabase,
+  FaChartLine,
+  FaLaptopCode
+} from 'react-icons/fa';
+import {
+  SiC,
+  SiMysql,
+  SiTailwindcss,
+  SiJavascript,
+  SiFastapi,
+  SiFlask,
+  SiOpencv,
+  SiScikitlearn,
+  SiPandas,
+  SiNumpy,
+  SiPycharm,
+  SiEclipseide
+} from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 
+const SKILL_MAP = {
+  python: { icon: <FaPython />, color: 'text-sky-300', bg: 'hover:border-sky-400/60' },
+  javascript: { icon: <SiJavascript />, color: 'text-yellow-300', bg: 'hover:border-yellow-400/60' },
+  java: { icon: <FaJava />, color: 'text-orange-400', bg: 'hover:border-orange-400/60' },
+  c: { icon: <SiC />, color: 'text-blue-400', bg: 'hover:border-blue-400/60' },
+  sql: { icon: <FaDatabase />, color: 'text-cyan-300', bg: 'hover:border-cyan-400/60' },
+  react: { icon: <FaReact />, color: 'text-cyan-400', bg: 'hover:border-cyan-400/60' },
+  fastapi: { icon: <SiFastapi />, color: 'text-teal-300', bg: 'hover:border-teal-400/60' },
+  flask: { icon: <SiFlask />, color: 'text-slate-200', bg: 'hover:border-slate-300/60' },
+  tailwind: { icon: <SiTailwindcss />, color: 'text-sky-400', bg: 'hover:border-sky-400/60' },
+  html: { icon: <FaHtml5 />, color: 'text-orange-500', bg: 'hover:border-orange-500/60' },
+  css: { icon: <FaCss3Alt />, color: 'text-blue-400', bg: 'hover:border-blue-400/60' },
+  opencv: { icon: <SiOpencv />, color: 'text-emerald-400', bg: 'hover:border-emerald-400/60' },
+  'scikit-learn': { icon: <SiScikitlearn />, color: 'text-blue-300', bg: 'hover:border-blue-400/60' },
+  pandas: { icon: <SiPandas />, color: 'text-indigo-300', bg: 'hover:border-indigo-400/60' },
+  numpy: { icon: <SiNumpy />, color: 'text-cyan-300', bg: 'hover:border-cyan-400/60' },
+  matplotlib: { icon: <FaChartLine />, color: 'text-sky-300', bg: 'hover:border-sky-400/60' },
+  mysql: { icon: <SiMysql />, color: 'text-blue-400', bg: 'hover:border-blue-400/60' },
+  git: { icon: <FaGitAlt />, color: 'text-orange-400', bg: 'hover:border-orange-400/60' },
+  github: { icon: <FaGithub />, color: 'text-slate-100', bg: 'hover:border-slate-300/60' },
+  'vs code': { icon: <VscVscode />, color: 'text-sky-400', bg: 'hover:border-sky-400/60' },
+  pycharm: { icon: <SiPycharm />, color: 'text-emerald-400', bg: 'hover:border-emerald-400/60' },
+  eclipse: { icon: <SiEclipseide />, color: 'text-indigo-400', bg: 'hover:border-indigo-400/60' },
+};
+
+const getSkillConfig = (skillName) => {
+  const normalized = skillName.toLowerCase().trim();
+  for (const key of Object.keys(SKILL_MAP)) {
+    if (key === 'c' && normalized === 'c') return SKILL_MAP[key];
+    if (key !== 'c' && normalized.includes(key)) return SKILL_MAP[key];
+  }
+  return { icon: <FaLaptopCode />, color: 'text-sky-400', bg: 'hover:border-sky-400/50' };
+};
+
 const Skills = () => {
-  
-  // Helper to get Icon and Color
-  const getSkillConfig = (skillName) => {
-    const name = skillName.toLowerCase();
-    
-    if (name.includes('python')) return { icon: <FaPython />, color: 'text-yellow-400' };
-    if (name.includes('java') && !name.includes('script')) return { icon: <FaJava />, color: 'text-orange-500' };
-    if (name.includes('html')) return { icon: <FaHtml5 />, color: 'text-orange-600' };
-    if (name.includes('css')) return { icon: <FaCss3Alt />, color: 'text-blue-500' };
-    if (name.includes('javascript')) return { icon: <SiJavascript />, color: 'text-yellow-300' };
-    if (name.includes('react')) return { icon: <FaReact />, color: 'text-cyan-400' };
-    if (name.includes('tailwind')) return { icon: <SiTailwindcss />, color: 'text-cyan-300' };
-    if (name.includes('mysql')) return { icon: <SiMysql />, color: 'text-blue-500' };
-    if (name === 'c') return { icon: <SiC />, color: 'text-blue-400' };
-    if (name.includes('c++')) return { icon: <SiCplusplus />, color: 'text-blue-600' };
-    if (name.includes('git') && !name.includes('hub')) return { icon: <FaGitAlt />, color: 'text-red-500' };
-    if (name.includes('github')) return { icon: <FaGithub />, color: 'text-white' };
-    if (name.includes('vs code')) return { icon: <VscVscode />, color: 'text-blue-500' };
-    
-    return { icon: <FaHtml5 />, color: 'text-gray-400' };
-  };
-
   return (
-    <section id="skills" className="py-20 bg-[#11071F]">
-      <div className="container mx-auto px-6">
-        
-        {/* Title */}
-        <h2 className="text-4xl font-bold text-center text-white mb-16">
-          My <span className="text-rose-500">Skills</span>
-        </h2>
+    <section id="skills" className="py-24 bg-dark-900 relative">
+      {/* Background Accent */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none"></div>
 
-        {/* Categories Grid (Like your screenshot) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        
+        {/* Section Heading */}
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <div className="inline-block text-sky-400 text-sm font-semibold tracking-wider uppercase bg-blue-500/10 px-3.5 py-1 rounded-full border border-sky-400/30">
+            Technical Stack
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+            Skills & <span className="text-gradient-blue">Competencies</span>
+          </h2>
+          <p className="text-slate-400 text-sm sm:text-base">
+            Languages, frameworks, and data science libraries I leverage to build scalable software.
+          </p>
+        </div>
+
+        {/* Skills Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {personalDetails.skills.map((category, index) => (
-            <div 
+            <div
               key={index}
-              className="bg-[#1a0b2e] border border-rose-500/20 rounded-2xl p-8 hover:shadow-xl hover:shadow-rose-500/10 transition-shadow duration-300"
+              className="glass-card rounded-2xl p-6 hover:border-sky-400/50 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between"
             >
-              {/* Category Title */}
-              <h3 className="text-2xl font-bold text-center text-rose-400 mb-8">
-                {category.title}
-              </h3>
-              
-              {/* Skills Pills Layout */}
-              <div className="flex flex-wrap justify-center gap-4">
-                {category.skills.map((skill, idx) => {
-                  const { icon, color } = getSkillConfig(skill);
-                  return (
-                    <div 
-                      key={idx}
-                      className="flex items-center gap-3 bg-[#24123a] border border-rose-500/30 px-4 py-3 rounded-lg hover:bg-rose-500/20 transition-colors duration-300 cursor-default"
-                    >
-                      <span className={`text-2xl ${color}`}>{icon}</span>
-                      <span className="text-gray-200 font-medium">{skill}</span>
-                    </div>
-                  );
-                })}
+              <div>
+                {/* Category Header */}
+                <div className="flex items-center justify-between pb-3.5 mb-5 border-b border-blue-500/20">
+                  <h3 className="text-lg font-bold text-sky-200">
+                    {category.title}
+                  </h3>
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-blue-500/20 text-sky-300 border border-blue-400/30">
+                    {category.skills.length}
+                  </span>
+                </div>
+
+                {/* Skills Pills */}
+                <div className="flex flex-wrap gap-2.5">
+                  {category.skills.map((skill, idx) => {
+                    const { icon, color, bg } = getSkillConfig(skill);
+                    return (
+                      <div
+                        key={idx}
+                        className={`flex items-center gap-2 bg-dark-800/90 border border-blue-500/20 px-3.5 py-2 rounded-xl ${bg} hover:bg-dark-700 transition-all duration-200 cursor-default group`}
+                      >
+                        <span className={`text-lg ${color} transition-transform group-hover:scale-110`}>
+                          {icon}
+                        </span>
+                        <span className="text-slate-200 text-xs sm:text-sm font-medium">
+                          {skill}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           ))}
